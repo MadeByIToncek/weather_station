@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://clyj3j8s1omtu"]
+
+[ext_resource type="Script" path="res://client/connect.gd" id="1_1ueok"]
+[ext_resource type="FontFile" uid="uid://cpy5stk0art5k" path="res://vcr.ttf" id="1_wjk4i"]
+
+[node name="Connect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ueok")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48, 27)
+color = Color(0, 0, 0, 1)
+
+[node name="Address" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 373.0
+offset_right = 1454.0
+offset_bottom = 454.0
+theme_override_fonts/font = ExtResource("1_wjk4i")
+theme_override_font_sizes/font_size = 66
+text = "192.168.99.64"
+placeholder_text = "Address"
+text_direction = 1
+language = "cs_CZ"
+
+[node name="Port" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 470.0
+offset_right = 1454.0
+offset_bottom = 547.0
+theme_override_fonts/font = ExtResource("1_wjk4i")
+theme_override_font_sizes/font_size = 66
+text = "4567"
+placeholder_text = "Port"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 571.0
+offset_right = 1093.0
+offset_bottom = 654.0
+theme_override_fonts/font = ExtResource("1_wjk4i")
+theme_override_font_sizes/font_size = 51
+text = "Connect"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

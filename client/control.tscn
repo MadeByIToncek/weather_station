@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://chr3voqqsg7ms"]
+
+[ext_resource type="Theme" uid="uid://crrxvplf1u5fc" path="res://client/button_theme.theme" id="1_fraxk"]
+[ext_resource type="Script" path="res://client/control.gd" id="1_rj22q"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rj22q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48, 27)
+color = Color(0, 0, 0, 1)
+
+[node name="GulfClouds" type="Button" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 82.0
+offset_right = 373.0
+offset_bottom = 234.0
+theme = ExtResource("1_fraxk")
+text = "Gulf clouds"
+
+[node name="LandingClouds" type="Button" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 82.0
+offset_right = 744.0
+offset_bottom = 234.0
+theme = ExtResource("1_fraxk")
+text = "Landing clouds"
+
+[node name="OrbitPath" type="Button" parent="."]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 82.0
+offset_right = 1028.0
+offset_bottom = 234.0
+theme = ExtResource("1_fraxk")
+text = "Orbit path"
+
+[node name="OrbitPath2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1043.0
+offset_top = 82.0
+offset_right = 1310.0
+offset_bottom = 234.0
+theme = ExtResource("1_fraxk")
+text = "Orbit path2"
+
+[node name="ADSB" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1322.0
+offset_top = 82.0
+offset_right = 1589.0
+offset_bottom = 234.0
+theme = ExtResource("1_fraxk")
+text = "ADSB"
+
+[connection signal="pressed" from="GulfClouds" to="." method="_on_gulf_clouds_pressed"]
+[connection signal="pressed" from="LandingClouds" to="." method="_on_landing_clouds_pressed"]
+[connection signal="pressed" from="OrbitPath" to="." method="_on_orbit_path_pressed"]
+[connection signal="pressed" from="OrbitPath2" to="." method="_on_orbit_path_2_pressed"]
+[connection signal="pressed" from="ADSB" to="." method="_on_adsb_pressed"]

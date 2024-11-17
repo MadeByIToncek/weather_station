@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://bercmdykg6log"]
+
+[ext_resource type="Script" path="res://sprites/LoadImage.cs" id="1_15uvm"]
+
+[node name="Fulldisk2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48, 27)
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Africa Central" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 400.0
+offset_right = 2447.0
+offset_bottom = 1850.0
+scale = Vector2(0.24, 0.24)
+script = ExtResource("1_15uvm")
+URL = "https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSG_IR108Color_CentralAfrica.jpg"
+
+[node name="Africa West" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 176.0
+offset_right = 1831.0
+offset_bottom = 1397.0
+scale = Vector2(0.28, 0.28)
+script = ExtResource("1_15uvm")
+URL = "https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSG_IR108Color_WesternAfrica.jpg"
+
+[node name="Africa West Atlantic" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 63.0
+offset_right = 1284.0
+offset_bottom = 1083.0
+scale = Vector2(0.295, 0.295)
+script = ExtResource("1_15uvm")
+URL = "https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSG_IR108Color_WestAtlantic.jpg"
+
+[node name="Africa South" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 660.0
+offset_right = 3505.0
+offset_bottom = 2773.0
+scale = Vector2(0.159999, 0.159999)
+script = ExtResource("1_15uvm")
+URL = "https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSG_IR108Color_SouthernAfrica.jpg"
+
+[node name="Africa Antarctica" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 790.0
+offset_right = 11554.0
+offset_bottom = 8365.0
+scale = Vector2(0.0399996, 0.0399996)
+script = ExtResource("1_15uvm")
+URL = "https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSG_IR108Color_Antarctic.jpg"
+
+[node name="Africa Fulldisk" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 3712.0
+offset_bottom = 3712.0
+scale = Vector2(0.298, 0.298)
+script = ExtResource("1_15uvm")
+URL = "https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSG_IR108Color_FullResolution.jpg"

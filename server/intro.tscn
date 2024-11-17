@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyi6u2y116o4c"]
+
+[ext_resource type="Script" path="res://autoswitch.gd" id="1_h7kff"]
+[ext_resource type="Texture2D" uid="uid://dpfhfq3m7e8cy" path="res://sprites/iqlandia.png" id="2_1eccr"]
+[ext_resource type="FontFile" uid="uid://cpy5stk0art5k" path="res://vcr.ttf" id="3_4r1ed"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_janjb"]
+font = ExtResource("3_4r1ed")
+font_size = 46
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h7kff")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48, 27)
+color = Color(0, 0.627451, 0.870588, 1)
+
+[node name="Iqlandia" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.357, 0.357)
+texture = ExtResource("2_1eccr")
+
+[node name="ServerStatus" type="Label" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 29.0
+offset_right = 970.0
+offset_bottom = 70.0
+text = "Starting internal control server..."
+label_settings = SubResource("LabelSettings_janjb")

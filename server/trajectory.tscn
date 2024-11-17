@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://db1uaft80crxs"]
+
+[ext_resource type="FontFile" uid="uid://cpy5stk0art5k" path="res://vcr.ttf" id="1_8n310"]
+[ext_resource type="Script" path="res://FetchTrajectory.cs" id="1_m7kj1"]
+[ext_resource type="Shader" uid="uid://bmxe8yma0ssno" path="res://server/trajectory.tres" id="2_i24ix"]
+[ext_resource type="Script" path="res://server/Button.cs" id="4_njdtr"]
+[ext_resource type="Script" path="res://server/Animator.cs" id="4_sdbwp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66ecw"]
+render_priority = 0
+shader = ExtResource("2_i24ix")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2rujy"]
+material = SubResource("ShaderMaterial_66ecw")
+radial_segments = 128
+rings = 64
+
+[sub_resource type="Environment" id="Environment_b5o1w"]
+background_mode = 1
+background_energy_multiplier = 0.0
+reflected_light_source = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_p3b2w"]
+font = ExtResource("1_8n310")
+font_size = 66
+
+[node name="Trajectory" type="Node3D" node_paths=PackedStringArray("request", "label", "orbitParent")]
+script = ExtResource("1_m7kj1")
+request = NodePath("HTTPRequest")
+label = NodePath("CanvasLayer/Label")
+orbitParent = NodePath("EarthPackage/Orbits")
+
+[node name="EarthPackage" type="Node3D" parent="."]
+transform = Transform3D(-0.606141, 0, -0.795357, 0, 1, 0, 0.795357, 0, -0.606141, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EarthPackage"]
+mesh = SubResource("SphereMesh_2rujy")
+skeleton = NodePath("../..")
+
+[node name="Orbits" type="Node3D" parent="EarthPackage"]
+transform = Transform3D(-0.072605, 0.498295, -0.600905, 0.155667, 0.600618, 0.47925, 0.764953, -0.0749304, -0.154562, 0, 0, 0)
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+use_threads = true
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.90499, -0.425432, 0, 0.425432, 0.90499, 0, 0, 0)
+sky_mode = 1
+
+[node name="Ambient_Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, -5.22852e-08, 0.801442, 0.598073, 7.00643e-08, 0.598073, -0.801442, 0, 0, 0)
+light_energy = 0.09
+sky_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("trajectoryScene")]
+transform = Transform3D(0.763316, 0.021249, -0.645677, -0.0102597, 0.999732, 0.0207715, 0.645944, -0.00923149, 0.763328, -0.802355, 0.141833, 1.08149)
+environment = SubResource("Environment_b5o1w")
+doppler_tracking = 2
+current = true
+near = 0.001
+far = 20.0
+script = ExtResource("4_sdbwp")
+trajectoryScene = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 192.0
+offset_top = 23.0
+offset_right = 1072.0
+offset_bottom = 87.0
+text = "Unable to request data"
+label_settings = SubResource("LabelSettings_p3b2w")
+
+[node name="Button" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("camera")]
+offset_left = 24.0
+offset_top = 19.0
+offset_right = 174.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 46
+text = "Next"
+script = ExtResource("4_njdtr")
+camera = NodePath("../../Camera3D")

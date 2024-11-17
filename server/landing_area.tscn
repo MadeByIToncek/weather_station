@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtid4dl4cqmav"]
+
+[ext_resource type="Script" path="res://sprites/LoadImage.cs" id="1_coo0p"]
+
+[node name="LandingArea" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48, 27)
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.89, 0.89)
+
+[node name="EastLandingArea" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 671.0
+offset_right = 2155.0
+offset_bottom = 1304.0
+script = ExtResource("1_coo0p")
+URL = "https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSGIODC_IR108Color_EastIndianOcean.jpg"
+
+[node name="WestLandingArea" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 1321.0
+offset_bottom = 1304.0
+script = ExtResource("1_coo0p")
+URL = "https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSGIODC_IR108Color_WestIndianOcean.jpg"

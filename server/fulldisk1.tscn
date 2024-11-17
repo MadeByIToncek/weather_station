@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://o7midf3tqdx5"]
+
+[ext_resource type="Script" path="res://sprites/LoadImage.cs" id="1_c406o"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48, 27)
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 258.41
+offset_top = 42.42
+offset_right = 298.41
+offset_bottom = 82.42
+scale = Vector2(0.25, 0.25)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -505.0
+offset_top = -177.0
+offset_right = 6703.0
+offset_bottom = 4148.0
+script = ExtResource("1_c406o")
+URL = "https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/taw/GEOCOLOR/3600x2160.jpg"
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -1031.0
+offset_top = -7.0
+offset_right = 969.0
+offset_bottom = 1993.0
+script = ExtResource("1_c406o")
+URL = "https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/gm/GEOCOLOR/2000x2000.jpg"

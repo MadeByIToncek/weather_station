@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cgoprm38exetp"]
+
+[node name="Radar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48, 27)
+color = Color(0, 0, 0, 1)
+
+[node name="WebView" type="WebView" parent="."]
+url = "https://globe.adsbexchange.com"
+devtools = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
