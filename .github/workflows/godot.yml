@@ -1,0 +1,27 @@
+name: "godot-ci export"
+on: push
+
+env:
+  GODOT_VERSION: 4.3.0
+  EXPORT_NAME: weather_station
+
+jobs:
+  export-windows:
+    name: Windows Export
+    runs-on: ubuntu-latest
+    container:
+      image: docker://barichello/godot-ci:mono-4.3.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup
+        run: |
+          mkdir -v -p build/linux build/windows build/mac build/web ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable.mono ~/.local/share/godot/templates/${GODOT_VERSION}.stable.mono
+      - name: Windows Build
+        run: godot -v --export "Windows Desktop" ./build/windows/$EXPORT_NAME.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: windows
+          path: ./build/windows/
