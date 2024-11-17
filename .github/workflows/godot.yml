@@ -1,27 +1,26 @@
-name: "godot-ci export"
-on: push
+name: Build Godot Project
 
-env:
-  GODOT_VERSION: 4.3.0
-  EXPORT_NAME: weather_station
+on:
+  push: {}
+  pull_request: {}
 
 jobs:
-  export-windows:
-    name: Windows Export
+  Godot:
     runs-on: ubuntu-latest
-    container:
-      image: docker://barichello/godot-ci:mono-4.3.0
+    strategy:
+      matrix:
+        platform: [windows]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup
-        run: |
-          mkdir -v -p build/linux build/windows build/mac build/web ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable.mono ~/.local/share/godot/templates/${GODOT_VERSION}.stable.mono
-      - name: Windows Build
-        run: godot -v --export "Windows Desktop" ./build/windows/$EXPORT_NAME.exe
+      - uses: actions/checkout@v4
+      - name: Build
+        id: build
+        uses: manleydev/build-godot-action@v1.4.1
+        with:
+          name: weather_station
+          preset: ${{ matrix.platform }}
+          debugMode: "false"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: windows
-          path: ./build/windows/
+          name: weather_station_${{ matrix.platform }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
